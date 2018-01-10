@@ -27,8 +27,8 @@ def main():
     That is, a  TEST   function will not be called
     until you begin work on the code that it is testing.
     """
-    #if m1_tests.is_implemented('__init__', 20):
-    #   run_test_init()
+    if m1_tests.is_implemented('__init__', 20):
+        run_test_init()
     if m1_tests.is_implemented('get_distance_from'):
         run_test_get_distance_from()
     if m1_tests.is_implemented('swell_or_shrink_once'):
@@ -108,6 +108,7 @@ class CircleChanger(object):
         self.colors = colors
         self.circle.fill_color = fill_color
         self.original_color = fill_color
+        self.color_change_number = 0
 
     def __repr__(self):
         """
@@ -472,7 +473,10 @@ class CircleChanger(object):
         #   Second, READ the   run_test_change_to_next_color_in_tuple
         #   function (below).  Third, implement and test this method.
         ################################################################
-
+        self.circle.fill_color = self.colors[self.color_change_number]
+        self.color_change_number = self.color_change_number + 1
+        if self.color_change_number > len(self.colors) - 1:
+            self.color_change_number = 0
 
 ########################################################################
 # The TEST functions for the  CircleChanger  class begin here.
